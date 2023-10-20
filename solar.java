@@ -3,6 +3,7 @@ public class solar {
     public static double angle;
     //Creates the window in which the planets are drawn in
     public static SolarSystem solar = new SolarSystem(1000, 1000);
+    //GIT PUSH TEST
     
     public static void main(String[] args) {
         //Sets the starting angle of all the planets
