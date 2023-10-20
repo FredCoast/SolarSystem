@@ -207,7 +207,7 @@ public class SolarSystem extends JFrame
 			}
 		}
 	}
-
+	
 	/**
      * Updates the window to show all objects that have recently been drawn using
      * drawSolarObject() or drawSolarObjectAbout().
