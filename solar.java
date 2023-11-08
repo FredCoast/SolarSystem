@@ -1,72 +1,65 @@
 public class solar { 
-    //Stores the angle of the earth
-    public static double angle;
-    //Creates the window in which the planets are drawn in
-    public static SolarSystem solar = new SolarSystem(1000, 1000);
-    //GIT PUSH TEST
-    
     public static void main(String[] args) {
         //Sets the starting angle of all the planets
-        angle = 0.0;
+        double angle = 0.0;
+        //Creates the window in which the planets are drawn in
+        SolarSystem solar = new SolarSystem(1000, 1000);
         //Creates The sun
-        addPlanet sun = new addPlanet(0, 0, 40, "ORANGE");
+        sun Sun = new sun(40,"ORANGE",solar);
         //Creates Mercury
-        addPlanet mercury = new addPlanet(30, 2, 4, "#A9A9A9");
+        planet mercury = new planet(30, 2, 4, "#A9A9A9",solar);
         //Creates Venus
-        addPlanet venus = new addPlanet(60, 1.5, 9, "#FFFFE0");
+        planet venus = new planet(60, 1.5, 9, "#FFFFE0",solar);
         //Creates Earth
-        addPlanet earth = new addPlanet(90, 1.0, 10, "#0074D9");
+        planet earth = new planet(90, 1.0, 10, "#0074D9",solar);
         //Creates Mars
-        addPlanet mars = new addPlanet(120, 0.85, 5, "#FF5733");
+        planet mars = new planet(120, 0.85, 5, "#FF5733",solar);
         //Creates Jupiter
-        addPlanet jupiter = new addPlanet(190, 0.7, 30, "#E4D058");
+        planet jupiter = new planet(190, 0.7, 30, "#E4D058",solar);
         //Creates  Saturn
-        addPlanet saturn = new addPlanet(260, 0.55, 23, "#DAA520");
+        planet saturn = new planet(260, 0.55, 23, "#DAA520",solar);
         //Creates Uranus
-        addPlanet uranus = new addPlanet(350, 0.4, 16, "#70DB93");
+        planet uranus = new planet(350, 0.4, 16, "#70DB93",solar);
         //Creates Neptune
-        addPlanet neptune = new addPlanet(420, 0.25, 14, "#0047AB");
+        planet neptune = new planet(420, 0.25, 14, "#0047AB",solar);
         //Adds the moon
-        addMoon moon = new addMoon(10,10.0,2,"WHITE", earth.returnDistance(),earth.returnMult());
+        moon moon = new moon(10,10.0,2,"WHITE", earth.getDistance(),earth.getAngleMult(),solar);
         //Adds Jupiters moons
-        addMoon ganymede = new addMoon(40, 2, 5, "WHITE", jupiter.returnDistance(),jupiter.returnMult());
-        addMoon callisto = new addMoon(37, 1.5, 4, "YELLOW", jupiter.returnDistance(),jupiter.returnMult());
-        addMoon io = new addMoon(50,1,4,"ORANGE",jupiter.returnDistance(),jupiter.returnMult());
-        addMoon Europa = new addMoon(45, 0.7, 3, "RED",jupiter.returnDistance(),jupiter.returnMult());
+        moon ganymede = new moon(40, 2, 5, "WHITE", jupiter.getDistance(),jupiter.getAngleMult(),solar);
+        moon callisto = new moon(37, 1.5, 4, "YELLOW", jupiter.getDistance(),jupiter.getAngleMult(),solar);
+        moon io = new moon(50,1,4,"ORANGE",jupiter.getDistance(),jupiter.getAngleMult(),solar);
+        moon Europa = new moon(45, 0.7, 3, "RED",jupiter.getDistance(),jupiter.getAngleMult(),solar);
         //Adds asteroid belt
-        addAsteroid asteroid = new addAsteroid(130,10,300,2,3,sun.returnDistance(),sun.returnMult());
-        asteroid.createAsteroids();
+        asteroid asteroid = new asteroid(130,10,300,2,3,0,0,solar);
         //Adds saturns rings
-        addAsteroid saturnsRings = new addAsteroid(26, 5, 500, 1, 3, saturn.returnDistance(), saturn.returnMult());
-        saturnsRings.createAsteroids();
-        addAsteroid rings = new addAsteroid(100, 100, 50, 10, 90, jupiter.returnDistance(), jupiter.returnMult());
-        rings.createAsteroids();
+        asteroid saturnsRings = new asteroid(26, 5, 500, 0.1, 3, saturn.getDistance(), saturn.getAngleMult(),solar);
+
+
         //Loop to keep drawing the planets
         while(true){
             //Adds the sun
-            sun.drawPlanet();
+            Sun.drawSun(angle);
             //Draws the planets
-            mercury.drawPlanet();
-            venus.drawPlanet();
-            earth.drawPlanet();
-            mars.drawPlanet();
-            jupiter.drawPlanet();
-            saturn.drawPlanet();
-            uranus.drawPlanet();
-            neptune.drawPlanet();
+            mercury.drawPlanet(angle);
+            venus.drawPlanet(angle);
+            earth.drawPlanet(angle);
+            mars.drawPlanet(angle);
+            jupiter.drawPlanet(angle);
+            saturn.drawPlanet(angle);
+            uranus.drawPlanet(angle);
+            neptune.drawPlanet(angle);
             //Draws the moons
-            moon.drawMoon();
-            ganymede.drawMoon();
-            callisto.drawMoon();
-            io.drawMoon();
-            Europa.drawMoon();
+            moon.drawMoon(angle);
+            ganymede.drawMoon(angle);
+            callisto.drawMoon(angle);
+            io.drawMoon(angle);
+            Europa.drawMoon(angle);
             //Draws the asteroids
-            asteroid.drawAsteroids();
+            asteroid.drawAsteroids(angle);
             //Draws saturns rings
-            saturnsRings.drawAsteroids();
-            rings.drawAsteroids();
+            saturnsRings.drawAsteroids(angle);
             //Increases the angle of all the planets
-            angle += 0.5;
+            angle += 1;
             //Allows it to redraw the solar system
             solar.finishedDrawing();
         }
