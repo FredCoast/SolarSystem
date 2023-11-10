@@ -9,7 +9,7 @@ public class solar {
         //Creates Mercury
         planet mercury = new planet(30, 2, 4, "#A9A9A9",solar);
         //Creates Venus
-        planet venus = new planet(60, 1.5, 9, "#FFFFE0",solar);
+        planet venus = new planet(60, -1.5, 9, "#FFFFE0",solar);
         //Creates Earth
         planet earth = new planet(90, 1.0, 10, "#0074D9",solar);
         //Creates Mars
@@ -32,7 +32,7 @@ public class solar {
         //Adds asteroid belt
         asteroid asteroid = new asteroid(130,10,300,2,3,0,0,solar);
         //Adds saturns rings
-        asteroid saturnsRings = new asteroid(26, 5, 500, 0.1, 3, saturn.getDistance(), saturn.getAngleMult(),solar);
+        asteroid saturnsRings = new asteroid(26, 5, 500, 1, 3, saturn.getDistance(), saturn.getAngleMult(),solar);
 
 
         //Loop to keep drawing the planets
@@ -59,7 +59,7 @@ public class solar {
             //Draws saturns rings
             saturnsRings.drawAsteroids(angle);
             //Increases the angle of all the planets
-            angle += 1;
+            angle += 0.5;
             //Allows it to redraw the solar system
             solar.finishedDrawing();
         }
